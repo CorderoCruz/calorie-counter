@@ -1,0 +1,12 @@
+.mat-mdc-tab-group,
+.mat-mdc-tab-nav-bar {
+  --mat-tab-header-active-ripple-color: 0 !important;
+  --mat-tab-header-inactive-ripple-color: 0 !important;
+  --mat-tab-header-active-label-text-color: black !important;
+  --mat-tab-header-active-focus-label-text-color: black !important;
+}
+
+.mat-mdc-tab-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.062);
+  padding-bottom: 3px;
+}
