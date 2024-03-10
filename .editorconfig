@@ -7,10 +7,15 @@ indent_style = space
 indent_size = 2
 insert_final_newline = true
 trim_trailing_whitespace = true
+max_line_length = 110
+visual_wrap = true
+insert_final_newline = true
+end_of_line = crfl
+bracket_new_line = true
+
 
 [*.ts]
-quote_type = single
+quote_type = double
 
 [*.md]
-max_line_length = off
 trim_trailing_whitespace = false
