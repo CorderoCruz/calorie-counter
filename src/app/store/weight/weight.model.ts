@@ -5,6 +5,12 @@ export type Weight = {
 
 export type WeightState = {
   weights: Weight[];
-  loading: boolean;
-  error: boolean | { message: string };
+  getWeightLoading: boolean;
+  addWeightLoading: boolean;
+  editWeightLoading: boolean;
+  deleteWeightLoading: boolean;
+  getWeightError: boolean | { message: string };
+  addWeightError: boolean | { message: string };
+  editWeightError: boolean | { message: string };
+  deleteWeightError: boolean | { message: string };
 };
