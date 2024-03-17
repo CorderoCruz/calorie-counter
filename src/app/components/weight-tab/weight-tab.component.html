@@ -1,25 +1,4 @@
-<div class="weight-tab-container mt-4">
-  <form [formGroup]="weightForm">
-    <div class="input-container">
-      <label for=""></label>
-      <input type="text" formControlName="date" />
-    </div>
-    <div class="input-container">
-      <label for=""></label>
-      <input type="text" formControlName="weight" />
-    </div>
-    <button (click)="addWeight()">Add Weight</button>
-  </form>
-
-  @defer (when weights().weights.length;) {
-  <div>
-    @for (weight of weights().weights; track $index) {
-    <div>{{ weight.lbs }}</div>
-    }
-  </div>
-  } @placeholder (minimum 1000) {
-  <span class="loader"></span>
-  } @error {
-  <div>Unexpected Error happened!</div>
-  }
+<div class="weight-tab-container mt-4 container">
+  <weight-form></weight-form>
+  <weight-list></weight-list>
 </div>
