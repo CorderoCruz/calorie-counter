@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "get-fit-45e8d"
-  }
+    "default": "weight-loss-tracker-wlt",
+    "weight-loss-tracker": "weight-loss-tracker-wlt"
+  },
+  "targets": {},
+  "etags": {}
 }

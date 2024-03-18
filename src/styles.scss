@@ -12,3 +12,13 @@
 html {
   min-width: 375px;
 }
+
+.border-success {
+  border-bottom: 2px solid rgb(157, 255, 157);
+}
+.border-danger {
+  border-bottom: 2px solid rgb(255, 158, 158);
+}
+.border-warning {
+  border-bottom: 2px solid rgb(255, 255, 169);
+}

@@ -1,0 +1,42 @@
+<div class="weights-container mt-5">
+  @defer (when weights().weights.length || weights().getWeightError;) {
+  <div>
+    @if (weights().weights.length) {
+    <div>
+      <div class="container pb-5">
+        <div class="row">
+          @for (weight of weights().weights; track $index) {
+          <div class="col-12 col-md-6 col-xxl-3">
+            <div class="d-flex align-items-center justify-content-center mt-3 shadow p-3  {{ determineBg($index) }}">
+              <div class="d-flex gap-2">
+                <h6 class="m-0">Weight for {{ weight.date }}:</h6>
+                <h6 class="m-0">{{ weight.lbs | number : ".2" }} lbs</h6>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+    } @if (weights().getWeightError) {
+    <div>Error</div>
+    }
+  </div>
+  } @placeholder (minimum 500) {
+  <div class="d-flex align-items-center justify-content-center">
+    <div class="lds-grid">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  } @error() {
+  <div>Unexpected Error happened!</div>
+  }
+</div>

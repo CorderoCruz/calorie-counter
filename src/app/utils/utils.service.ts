@@ -1,7 +1,12 @@
-import { Injectable } from "@angular/core";
+import { Injectable, computed, inject } from "@angular/core";
+import { WeightStore } from "../store/weight/weight.store";
+import { WeightState } from "../store/weight/weight.model";
 
 @Injectable({ providedIn: "root" })
 export class UtilsService {
+  private weightStore = inject<WeightStore>(WeightStore);
+  private weights = computed<WeightState>(() => this.weightStore.weightState());
+
   getTodaysDate(): string {
     const today = new Date();
     const yyyy = today.getFullYear();
@@ -14,6 +19,17 @@ export class UtilsService {
   }
 
   public formatDate(date: Date) {
-    return `${date?.getMonth()}-${date?.getDate()}-${date?.getFullYear()}`;
+    return `${date?.getMonth() + 1}-${date?.getDate()}-${date?.getFullYear()}`;
+  }
+
+  public determineBg(index: number): string {
+    if (index + 1 !== this.weights().weights.length) {
+      return this.weights().weights[index].lbs > this.weights().weights[index + 1].lbs
+        ? "border-danger"
+        : this.weights().weights[index].lbs === this.weights().weights[index + 1].lbs
+        ? "border-warning"
+        : "border-success";
+    }
+    return "";
   }
 }

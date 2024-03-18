@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
-import { Observable, catchError, map, throwError } from "rxjs";
-import { Weight } from "../store/weight/weight.model";
+import { Observable } from "rxjs";
+import { Weight, WeightResponse } from "../store/weight/weight.model";
 
 @Injectable({ providedIn: "root" })
 export class WeightService {
@@ -12,7 +12,11 @@ export class WeightService {
     return this.http.get(this.API_URL) as Observable<Weight[]>;
   }
 
-  public addWeight(weight: Weight): Observable<Weight> {
-    return this.http.post(this.API_URL, weight) as Observable<Weight>;
+  public addWeight(weight: Weight): Observable<WeightResponse> {
+    return this.http.post(this.API_URL, weight) as Observable<WeightResponse>;
+  }
+
+  public deleteWeight(date: string): Observable<WeightResponse> {
+    return this.http.delete(this.API_URL, { body: { date } }) as Observable<WeightResponse>;
   }
 }

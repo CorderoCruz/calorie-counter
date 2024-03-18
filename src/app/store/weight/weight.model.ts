@@ -14,3 +14,9 @@ export type WeightState = {
   editWeightError: boolean | { message: string };
   deleteWeightError: boolean | { message: string };
 };
+
+export type WeightResponse = {
+  status: number;
+  data: Weight;
+  message: string;
+};

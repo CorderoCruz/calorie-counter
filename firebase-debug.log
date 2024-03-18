@@ -1,0 +1,18 @@
+[debug] [2024-03-18T01:46:04.978Z] ----------------------------------------------------------------------
+[debug] [2024-03-18T01:46:04.980Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\cruzc\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-03-18T01:46:04.980Z] CLI Version:   13.0.3
+[debug] [2024-03-18T01:46:04.980Z] Platform:      win32
+[debug] [2024-03-18T01:46:04.980Z] Node Version:  v20.11.0
+[debug] [2024-03-18T01:46:04.980Z] Time:          Sun Mar 17 2024 21:46:04 GMT-0400 (Eastern Daylight Time)
+[debug] [2024-03-18T01:46:04.980Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-03-18T01:46:05.023Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-03-18T01:46:05.023Z] > authorizing via signed-in user (cruzcordero7600@gmail.com)
+[debug] [2024-03-18T01:46:05.023Z] [iam] checking project weight-loss-tracker-wlt for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-03-18T01:46:05.024Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/weight-loss-tracker-wlt:testIamPermissions [none]
+[debug] [2024-03-18T01:46:05.024Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/weight-loss-tracker-wlt:testIamPermissions x-goog-quota-user=projects/weight-loss-tracker-wlt
+[debug] [2024-03-18T01:46:05.024Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/weight-loss-tracker-wlt:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-03-18T01:46:05.501Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/weight-loss-tracker-wlt:testIamPermissions 200
+[debug] [2024-03-18T01:46:05.501Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/weight-loss-tracker-wlt:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-03-18T01:46:05.502Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/weight-loss-tracker-wlt [none]
+[debug] [2024-03-18T01:46:06.034Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/weight-loss-tracker-wlt 200

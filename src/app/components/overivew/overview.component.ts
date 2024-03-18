@@ -1,9 +1,8 @@
-import { AfterViewInit, Component, afterNextRender, inject } from "@angular/core";
+import { AfterViewInit, Component } from "@angular/core";
 import { MatTabsModule } from "@angular/material/tabs";
 import { OverviewTabComponent } from "../overview-tab/overview-tab.component";
-import { WeightTabComponent } from "../weight-tab/weight-tab.component";
 import { WeeklyCaloriesTabComponent } from "../weekly-calories-tab/weekly-calories-tab.component";
-import { HttpClient } from "@angular/common/http";
+import { WeightTabComponent } from "../weight-tab/weight-tab.component";
 
 @Component({
   standalone: true,
@@ -16,7 +15,7 @@ import { HttpClient } from "@angular/common/http";
           <overview-tab></overview-tab>
         </mat-tab>
         <mat-tab label="Weekly Calories">
-          <ng-template matTabContent> <weekly-calories-tab c></weekly-calories-tab></ng-template>
+          <ng-template matTabContent> <weekly-calories-tab></weekly-calories-tab></ng-template>
         </mat-tab>
         <mat-tab label="Weight">
           <ng-template matTabContent> <weight-tab> </weight-tab></ng-template>
@@ -25,25 +24,4 @@ import { HttpClient } from "@angular/common/http";
     </div>
   `,
 })
-export class OverviewComponent implements AfterViewInit {
-  private http = inject(HttpClient);
-  public readonly tabs = [
-    {
-      name: "overview-tab",
-      label: "Overview",
-      selector: `<overview-tab></overview-tab>`,
-    },
-    {
-      name: "weekly-calories-tab",
-      label: "Weekly Calories",
-      selector: `<weekly-calories-tab></weekly-calories-tab>`,
-    },
-    {
-      name: "weight-tab",
-      label: "Weight",
-      selector: `<weight-tab></weight-tab>`,
-    },
-  ];
-
-  ngAfterViewInit(): void {}
-}
+export class OverviewComponent {}
