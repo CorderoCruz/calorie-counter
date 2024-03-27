@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from "@angular/core";
+import { Component } from "@angular/core";
 import { MatTabsModule } from "@angular/material/tabs";
 import { OverviewTabComponent } from "../overview-tab/overview-tab.component";
 import { WeeklyCaloriesTabComponent } from "../weekly-calories-tab/weekly-calories-tab.component";
