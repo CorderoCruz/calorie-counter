@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from "@angular/core";
+import { Component, OnInit, inject, signal } from "@angular/core";
 import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { provideNativeDateAdapter } from "@angular/material/core";
@@ -27,7 +27,7 @@ import { WeightStore } from "../../store/weight/weight.store";
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <mat-label>{{ "Weight for " + weightForm.getRawValue().date?.toLocaleDateString() }}</mat-label>
+          <mat-label>{{ "Weight for " + dateSelected() }}</mat-label>
           <input matInput formControlName="lbs" />
           <mat-hint align="end">lbs.</mat-hint>
         </mat-form-field>
@@ -49,8 +49,10 @@ export class WeightFormComponent {
   private utils = inject<UtilsService>(UtilsService);
   private weightStore = inject<WeightStore>(WeightStore);
 
+  public dateSelected = signal<string>(this.utils.formatDate(new Date(this.utils.getTodaysDate())));
+
   public weightForm = this.fb.group({
-    date: [new Date(this.utils.getTodaysDate())!, [Validators.required]],
+    date: [new Date(this.dateSelected())],
     lbs: [[], [Validators.required]],
   });
 
@@ -59,7 +61,12 @@ export class WeightFormComponent {
     if (!lbs) {
       return alert("No weight provided!");
     }
-    const dateSelected = this.utils.formatDate(date!);
-    this.weightStore.addWeight({ date: dateSelected, lbs: lbs as number });
+
+    if (date) {
+      this.dateSelected.set(this.utils.formatDate(date!));
+    }
+
+    console.log(this.dateSelected());
+    this.weightStore.addWeight({ date: this.dateSelected(), lbs: lbs as number });
   }
 }

@@ -1,8 +1,15 @@
 {
   "projects": {
-    "default": "weight-loss-tracker-wlt",
-    "weight-loss-tracker": "weight-loss-tracker-wlt"
+    "default": "weight-loss-tracker-wlt"
   },
-  "targets": {},
+  "targets": {
+    "weight-loss-tracker-wlt": {
+      "hosting": {
+        "calorie-counter": [
+          "weight-loss-tracker-wlt"
+        ]
+      }
+    }
+  },
   "etags": {}
 }
