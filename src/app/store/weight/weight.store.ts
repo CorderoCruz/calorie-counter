@@ -58,9 +58,7 @@ export class WeightStore {
     { injector: this.injector }
   );
 
-  public editWeight(date: string, newWeight: number) {
-    return rxMethod<void>(tap());
-  }
+  public editWeight = rxMethod<{ date: string; newWeight: number }>(tap());
 
   public deleteWeight = rxMethod<string>(
     pipe(

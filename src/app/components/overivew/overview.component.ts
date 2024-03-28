@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, afterNextRender, signal } from "@angular/core";
 import { MatTabsModule } from "@angular/material/tabs";
 import { OverviewTabComponent } from "../overview-tab/overview-tab.component";
 import { WeeklyCaloriesTabComponent } from "../weekly-calories-tab/weekly-calories-tab.component";
@@ -10,7 +10,12 @@ import { WeightTabComponent } from "../weight-tab/weight-tab.component";
   imports: [MatTabsModule, OverviewTabComponent, WeightTabComponent, WeeklyCaloriesTabComponent],
   template: `
     <div class="overview-container px-3 py-2 px-md-4">
-      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" mat-stretch-tabs="true">
+      <mat-tab-group
+        mat-stretch-tabs="false"
+        mat-align-tabs="center"
+        mat-stretch-tabs="true"
+        [selectedIndex]="selectedTab()"
+        (selectedIndexChange)="selectedIndexChange($event)">
         <mat-tab label="Overview">
           <overview-tab></overview-tab>
         </mat-tab>
@@ -24,4 +29,16 @@ import { WeightTabComponent } from "../weight-tab/weight-tab.component";
     </div>
   `,
 })
-export class OverviewComponent {}
+export class OverviewComponent {
+  constructor() {
+    afterNextRender(() => {
+      this.selectedTab.set(+localStorage.getItem("selected-tab")!);
+    });
+  }
+
+  public selectedTab = signal<number>(0);
+
+  public selectedIndexChange(index: number): void {
+    localStorage.setItem("selected-tab", index + "");
+  }
+}
