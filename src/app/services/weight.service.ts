@@ -5,7 +5,7 @@ import { Weight, WeightResponse } from "../store/weight/weight.model";
 
 @Injectable({ providedIn: "root" })
 export class WeightService {
-  private http = inject<HttpClient>(HttpClient);
+  private readonly http = inject<HttpClient>(HttpClient);
   private readonly API_URL: string = "https://macro-api.up.railway.app/api/v1/weight";
 
   public getWeights(): Observable<Weight[]> {

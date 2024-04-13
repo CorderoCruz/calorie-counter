@@ -8,26 +8,7 @@ import { WeightTabComponent } from "../weight-tab/weight-tab.component";
   standalone: true,
   selector: `app-overview`,
   imports: [MatTabsModule, OverviewTabComponent, WeightTabComponent, WeeklyCaloriesTabComponent],
-  template: `
-    <div class="overview-container px-3 py-2 px-md-4">
-      <mat-tab-group
-        mat-stretch-tabs="false"
-        mat-align-tabs="center"
-        mat-stretch-tabs="true"
-        [selectedIndex]="selectedTab()"
-        (selectedIndexChange)="selectedIndexChange($event)">
-        <mat-tab label="Overview">
-          <overview-tab></overview-tab>
-        </mat-tab>
-        <mat-tab label="Weekly Calories">
-          <ng-template matTabContent> <weekly-calories-tab></weekly-calories-tab></ng-template>
-        </mat-tab>
-        <mat-tab label="Weight">
-          <ng-template matTabContent> <weight-tab> </weight-tab></ng-template>
-        </mat-tab>
-      </mat-tab-group>
-    </div>
-  `,
+  templateUrl: `./overview.component.html`,
 })
 export class OverviewComponent {
   constructor() {
@@ -39,6 +20,6 @@ export class OverviewComponent {
   public selectedTab = signal<number>(0);
 
   public selectedIndexChange(index: number): void {
-    localStorage.setItem("selected-tab", index + "");
+    localStorage.setItem("selected-tab", index.toString());
   }
 }

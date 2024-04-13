@@ -1,24 +1,59 @@
 <div class="weights-container mt-5">
-  @defer (when weights().weights.length || weights().getWeightError;) {
+  @defer (on viewport;) {
   <div>
-    @if (weights().weights.length) {
     <div>
       <div class="container pb-5">
         <div class="row">
-          @for (weight of weights().weights; track $index) {
+          <h6 class="text-center">Past 14 or less weight inputs</h6>
+          @for (weight of weights(); track $index) {
           <div class="col-12 col-md-6 col-xxl-3 p-0 p-sm-2">
-            <div class="d-flex align-items-center justify-content-center mt-3 shadow p-3  {{ determineBg($index) }}">
-              <div class="d-flex gap-2">
-                <h6 class="m-0">Weight for {{ weight.date }}:</h6>
-                <h6 class="m-0">{{ weight.lbs | number : ".2" }} lbs</h6>
+            @if (weight.lbs && weight.date) {
+            <div class="mt-3 shadow p-3">
+              <div class="d-grid gap-2 align-items-center justify-content-center">
+                <div class="d-flex gap-2">
+                  <h6 class="m-0">Weight for {{ weight.date }}:</h6>
+                  <h6 class="m-0">{{ weight.lbs | number : ".2" }} lbs</h6>
+                </div>
+                <div class="d-flex gap-5 justify-content-center">
+                  @switch (determineArrow($index)) { @case ('down') {
+                  <img src="../../../assets/DOWN_ARROW.svg" alt="" />
+                  } @case ('up') {
+                  <img src="../../../assets/UP_ARROW.svg" alt="" />
+                  } @default {
+                  <img src="../../../assets/DASH.svg" alt="" />
+                  } } @if((determineDifference($index)); as dif) {
+                  <p class="m-0 text-{{ dif > 0 ? 'danger' : 'success' }}">{{ dif | number : ".2" }}lbs</p>
+
+                  } @else {
+                  <p class="m-0 text-warning">0.00lbs</p>
+                  }
+                  <svg
+                    (click)="deleteWeight(weight.date, $index)"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="#f44336"
+                    class="bi bi-trash-fill"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
+                  </svg>
+                </div>
               </div>
             </div>
+            }@else {
+            <span class="w-100 text-align-center">Could not load weight for this date!</span>
+            }
+          </div>
+          } @empty {
+          <div class="d-flex justify-content-center">
+            <span class="text-align-center">No weights yet added yet!</span>
           </div>
           }
         </div>
       </div>
     </div>
-    } @if (weights().getWeightError) {
+    @if (weightState().getWeightError) {
     <div>Error</div>
     }
   </div>
