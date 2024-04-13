@@ -1,3 +1,7 @@
+svg {
+  cursor: pointer;
+}
+
 .lds-grid {
   display: inline-block;
   position: relative;
@@ -22,6 +26,7 @@
   left: 32px;
   animation-delay: -0.4s;
 }
+
 .lds-grid div:nth-child(3) {
   top: 8px;
   left: 56px;

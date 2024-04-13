@@ -3,13 +3,13 @@ import { WeightState } from "../../store/weight/weight.model";
 import { WeightStore } from "../../store/weight/weight.store";
 import { WeightFormComponent } from "../weight-form/weight-form.component";
 import { WeightListComponent } from "../weight-list/weight-list.component";
+import { WeightComponent } from "../weight/weight.component";
 
 @Component({
   standalone: true,
   selector: `weight-tab`,
-  imports: [WeightListComponent, WeightFormComponent],
-  templateUrl: `./weight-tab.component.html`,
-  styleUrl: `./weight-tab.component.scss`,
+  imports: [WeightListComponent, WeightFormComponent, WeightComponent],
+  template: `<weight-container></weight-container> `,
 })
 export class WeightTabComponent implements OnInit {
   private weightStore = inject<WeightStore>(WeightStore);

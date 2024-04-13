@@ -22,14 +22,23 @@ export class UtilsService {
     return `${date?.getMonth() + 1}-${date?.getDate()}-${date?.getFullYear()}`;
   }
 
-  public determineBg(index: number): string {
+  public determineArrow(index: number): "up" | "down" | "same" {
     if (index + 1 !== this.weights().weights.length) {
       return this.weights().weights[index].lbs > this.weights().weights[index + 1].lbs
-        ? "border-danger"
+        ? "up"
         : this.weights().weights[index].lbs === this.weights().weights[index + 1].lbs
-        ? "border-warning"
-        : "border-success";
+        ? "same"
+        : "down";
     }
-    return "";
+    return "same";
+  }
+
+  public determineDifference(index: number): number {
+    if (index + 1 !== this.weights().weights.length) {
+      const current: number = this.weights().weights[index].lbs;
+      const next: number = this.weights().weights[index + 1].lbs;
+      return current - next;
+    }
+    return 0;
   }
 }
